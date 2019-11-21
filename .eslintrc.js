@@ -28,6 +28,7 @@ module.exports = {
         'new-cap': 'off',
         'no-shadow': 'off',
         'no-unused-expressions': 'off',
-        'no-return-assign': 'off'
+        'no-return-assign': 'off',
+        'linebreak-style': '0ff'
     }
 };

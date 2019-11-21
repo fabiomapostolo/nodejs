@@ -1,13 +1,23 @@
-const express = require('express');
-const app = express();
+require('dotenv').config();
+require('module-alias/register');
+const boot = require('@service/boot');
+const config = require('@config');
+const mongoose = require('mongoose');
 
-app.use('/', (req, res) => {
-    res.send('Hello World');
-})
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
-app.listen(4000, (err) => {
-    if (err) {
-        return console.log('erro')   
-    }
-    console.log('servidor iniciado em http://localhost')
-});
+if(config.db.connectionString){
+    mongoose.connect(config.db.connectionString, boot)
+    console.log('Conectado com sucesso !')
+} else {
+    console.log('No connection string provided')
+}
+
+
+
+
+
+
+
